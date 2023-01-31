@@ -41,7 +41,7 @@ public class PlayerTeleporter : MonoBehaviour
     private void TeleportUp()
     {
         //teleport 20 up in relation to self
-        Vector3 up = new Vector3(0,20,0);
+        Vector3 up = new Vector3(0,100,0);
        
         gameObject.transform.position += up;
         _recentTeleport = true;
@@ -52,7 +52,7 @@ public class PlayerTeleporter : MonoBehaviour
     private void TeleportDown()
     {
         //teleport 20 down in relation to self
-        Vector3 down = new Vector3(0,-20,0);
+        Vector3 down = new Vector3(0,-100,0);
        
         gameObject.transform.position += down;
         _recentTeleport = true;
