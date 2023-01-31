@@ -476,6 +476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 879500200}
+  - component: {fileID: 879500201}
   m_Layer: 0
   m_Name: WorldTrigger A
   m_TagString: Untagged
@@ -498,6 +499,18 @@ Transform:
   m_Father: {fileID: 564319333}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &879500201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879500199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9437617324a976b4683b96ca17bc3553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1275464657
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860a15a2e763f6146ae4e25b23761381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayInSeconds: 3
+  delayInSeconds: 2
 --- !u!1 &1773193404
 GameObject:
   m_ObjectHideFlags: 0

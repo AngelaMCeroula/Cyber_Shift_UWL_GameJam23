@@ -7,11 +7,13 @@ public class PlayerTeleporter : MonoBehaviour
 {
     private bool _recentTeleport;
     public float delayInSeconds = 1;
+    private bool _teleportedToB;
     //public Vector3 teleportDistance;
 
     private void Start()
     {
         _recentTeleport = false;
+        _teleportedToB = false;
     }
 
     private void Update()
@@ -21,24 +23,45 @@ public class PlayerTeleporter : MonoBehaviour
 
     private void ProcessInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && _recentTeleport == false)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == false)
         {
-            Teleport();
+            TeleportUp();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == true)
+        {
+            TeleportDown();
+           
         }
         
         
         
     }
 
-    private void Teleport()
+    private void TeleportUp()
     {
         //teleport 20 up in relation to self
         Vector3 up = new Vector3(0,20,0);
        
         gameObject.transform.position += up;
         _recentTeleport = true;
+        _teleportedToB = true;
         StartCoroutine(TeleportDelay());
     }
+    
+    private void TeleportDown()
+    {
+        //teleport 20 down in relation to self
+        Vector3 down = new Vector3(0,-20,0);
+       
+        gameObject.transform.position += down;
+        _recentTeleport = true;
+        _teleportedToB = false;
+        StartCoroutine(TeleportDelay());
+    }
+    
+    
+    
 
     private IEnumerator TeleportDelay()
     {
