@@ -27,13 +27,13 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
-        if (_PlayerH_E.lives > 1)
+        if (_PlayerH_E.lives >= 1)
         {
             _PlayerH_E.lives--;
             WraptoCheckPoint();
         }
 
-        if (_PlayerH_E.lives <= 1)
+        if (_PlayerH_E.lives < 1)
         {
             GameOver();
         }
