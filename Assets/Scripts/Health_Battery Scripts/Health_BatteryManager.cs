@@ -27,7 +27,6 @@ public class Health_BatteryManager : MonoBehaviour
     {
         UpdateLives();
         UpdateBattery();
-        
     }
 
 
