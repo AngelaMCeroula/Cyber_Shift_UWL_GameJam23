@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PlayerTeleporter : MonoBehaviour
 {
+    public bool _hasTeleporter;
     private bool _recentTeleport;
-    public float delayInSeconds = 1;
+    public float delayInSeconds = 2;
     private bool _teleportedToB;
     //public Vector3 teleportDistance;
 
@@ -14,6 +15,7 @@ public class PlayerTeleporter : MonoBehaviour
     {
         _recentTeleport = false;
         _teleportedToB = false;
+        _hasTeleporter = false;
     }
 
     private void Update()
@@ -23,12 +25,12 @@ public class PlayerTeleporter : MonoBehaviour
 
     private void ProcessInputs()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == false)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == false && _hasTeleporter == true)
         {
             TeleportUp();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == true)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == true && _hasTeleporter == true)
         {
             TeleportDown();
            
@@ -60,13 +62,12 @@ public class PlayerTeleporter : MonoBehaviour
         StartCoroutine(TeleportDelay());
     }
     
-    
-    
-
     private IEnumerator TeleportDelay()
     {
         yield return new WaitForSeconds(delayInSeconds);
         _recentTeleport = false;
     }
+
+ 
 
 }
