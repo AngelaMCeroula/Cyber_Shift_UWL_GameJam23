@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - World B
   - World A
+  - Danger
+  - GM
   layers:
   - Default
   - TransparentFX

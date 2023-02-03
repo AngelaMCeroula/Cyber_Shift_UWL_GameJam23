@@ -107,12 +107,12 @@ public class PlayerController : MonoBehaviour
  {
      if(!isGrounded)
      {
-         Debug.Log("WE CAN JUMP!");
+         //Debug.Log("WE CAN JUMP!");
 
          if (col.gameObject.CompareTag("Ground"))
          {
              isGrounded = true;
-             Debug.Log("ISGROUNDED IS TRUEEEEEE!");
+             //Debug.Log("ISGROUNDED IS TRUEEEEEE!");
          }
      }
  }

@@ -1,18 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldStateSetter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool _isInWorldA;
+    public GameObject WorldAIndicator;
+    public GameObject WorldBIndicator;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        switch (_isInWorldA)
+        {
+            case false:
+            {
+                WorldBIndicator.SetActive(true);
+                WorldAIndicator.SetActive(false);
+                break;
+            }
+
+            case true:
+            {
+                WorldBIndicator.SetActive(false);
+                WorldAIndicator.SetActive(true);
+                break;
+                
+            }
+
+        }       
     }
 }
