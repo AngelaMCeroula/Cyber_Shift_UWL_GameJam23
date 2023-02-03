@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         _currentTime = 0;
-        StartStopWatch();
+        //StartStopWatch();
     }
 
     private void Update()
@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
         }
 
         TimeSpan time = TimeSpan.FromSeconds(_currentTime);
-        _currentTimeText.text = time.ToString(@"mm\:ss\:fff");
+        _currentTimeText.text = time.ToString(@"mm\:ss");
     }
 
     public void StartStopWatch()

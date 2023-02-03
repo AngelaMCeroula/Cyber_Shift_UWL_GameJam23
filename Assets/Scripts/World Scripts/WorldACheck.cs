@@ -6,6 +6,8 @@ using UnityEngine;
 public class WorldACheck : MonoBehaviour
 {
     public WorldStateSetter _wState;
+    
+    //script checks if player is within trigger and sets on WorldStateSetter the bool that tells if player is in World A or not
 
     private void Start()
     {

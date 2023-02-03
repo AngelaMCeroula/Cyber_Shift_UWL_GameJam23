@@ -8,13 +8,15 @@ public class PlayerTeleporter : MonoBehaviour
     public bool _hasTeleporter;
     private bool _recentTeleport;
     public float delayInSeconds = 2;
-    private bool _teleportedToB;
+    //private bool _teleportedToB;
+    private WorldStateSetter _worldStateSetter;
     //public Vector3 teleportDistance;
 
     private void Start()
     {
+        _worldStateSetter = GameObject.Find("WorldStateManager").GetComponent<WorldStateSetter>();
         _recentTeleport = false;
-        _teleportedToB = false;
+        //_teleportedToB = false;
         _hasTeleporter = false;
     }
 
@@ -25,12 +27,12 @@ public class PlayerTeleporter : MonoBehaviour
 
     private void ProcessInputs()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == false && _hasTeleporter == true)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _worldStateSetter._isInWorldA == true && _hasTeleporter == true)
         {
             TeleportUp();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _teleportedToB == true && _hasTeleporter == true)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _recentTeleport == false && _worldStateSetter._isInWorldA == false && _hasTeleporter == true)
         {
             TeleportDown();
            
@@ -47,7 +49,7 @@ public class PlayerTeleporter : MonoBehaviour
        
         gameObject.transform.position += up;
         _recentTeleport = true;
-        _teleportedToB = true;
+        _worldStateSetter._isInWorldA = true;
         StartCoroutine(TeleportDelay());
     }
     
@@ -58,7 +60,7 @@ public class PlayerTeleporter : MonoBehaviour
        
         gameObject.transform.position += down;
         _recentTeleport = true;
-        _teleportedToB = false;
+        _worldStateSetter._isInWorldA = false;
         StartCoroutine(TeleportDelay());
     }
     

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TeleporterItem : MonoBehaviour
 {
-    public PlayerTeleporter _playerTeleporter;
-    public Timer _timer;
+    private PlayerTeleporter _playerTeleporter;
+    private Timer _timer;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,7 @@ public class TeleporterItem : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             _playerTeleporter._hasTeleporter = true;
+            _timer.StartStopWatch();
             Destroy(gameObject);
             
         }

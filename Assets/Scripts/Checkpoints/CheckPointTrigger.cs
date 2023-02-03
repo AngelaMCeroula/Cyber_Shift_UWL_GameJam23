@@ -5,13 +5,12 @@ namespace Checkpoints
 {
     public class CheckPointTrigger : MonoBehaviour
     {
-        private GameManager _gameManager;
-        private GameMaster _gm;
-        private PlayerTeleporter _teleporter;
+        private WorldStateSetter _worldStateSetter;
+        private CheckPointManager _checkPointManager;
 
         void Start()
         {
-            _gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();
+            _worldStateSetter = GameObject.Find("WorldStateManager").GetComponent<WorldStateSetter>();
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -19,9 +18,18 @@ namespace Checkpoints
             if (col.CompareTag("Player"))
             {
                 // transform.position = new Vector3(gameObject.position.x + offset.x,offset.y, offset.z);
-                
-            
-                
+                if (_worldStateSetter._isInWorldA == true)
+                {
+                    _checkPointManager.SavePointInA();
+
+                }
+
+                if (_worldStateSetter._isInWorldA == false)
+                {
+                    _checkPointManager.SavePointInB();
+                    
+                }
+
             }
         }
     }
