@@ -15,9 +15,7 @@ public class PlayerHealthEnergy : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Danger"))
         {
-            GameManager.LoseLife();
-            //lives --;
-            
+            LoseLife();
         }
     }
 
@@ -25,9 +23,24 @@ public class PlayerHealthEnergy : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Danger"))
         {
-            GameManager.LoseLife();
-            //lives --;
+            LoseLife();
         }
+    }
+
+    void LoseLife()
+    {
+        if (lives >= 1)
+        {
+            lives--;
+            
+        }
+
+        if (lives < 1)
+        {
+            GameManager.GameOver();
+        }
+
+        
     }
 
     private void Update()
