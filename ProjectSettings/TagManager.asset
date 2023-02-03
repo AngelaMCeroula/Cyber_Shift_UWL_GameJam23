@@ -9,6 +9,7 @@ TagManager:
   - World A
   - Danger
   - GM
+  - Enemy
   layers:
   - Default
   - TransparentFX
