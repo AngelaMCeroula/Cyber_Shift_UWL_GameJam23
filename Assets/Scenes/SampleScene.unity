@@ -216,8 +216,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 16372642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.19, y: 1.47, z: 0}
-  m_LocalScale: {x: 1.485, y: 3.8390625, z: 1}
+  m_LocalPosition: {x: 9.19, y: 2.36, z: 0}
+  m_LocalScale: {x: 0.4640625, y: 3.8390625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 756023254}
@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 428274978}
   - component: {fileID: 428274980}
   - component: {fileID: 428274979}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hit me baby one more time
   m_TagString: Danger
   m_Icon: {fileID: 0}
@@ -1541,7 +1541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428274977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.52, y: 3.75, z: 0}
+  m_LocalPosition: {x: -5.52, y: 4.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3020,9 +3020,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1069640228}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DANGER
-  m_TagString: Untagged
+  m_TagString: Danger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
