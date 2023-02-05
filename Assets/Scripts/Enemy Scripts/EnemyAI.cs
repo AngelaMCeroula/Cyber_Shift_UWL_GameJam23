@@ -13,9 +13,11 @@ public class EnemyAI : MonoBehaviour
 
     public LayerMask floorMask;
     public LayerMask wallMask;
-    
-    
 
+    private bool shouldDie = false;
+    private float deathTimer = 0;
+    public float timeBeforeDestroy = 1.0f;
+    
     private enum EnemyState
     {
         Walking,
@@ -35,6 +37,33 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         UpdateEnemyPosition();
+        CheckCrushed();
+    }
+
+    public void Crush()
+    {
+        Debug.Log("crush crush crush");
+        _state = EnemyState.Dead;
+        //GetComponent<Animator>().SetBool("isCrushed", true);
+        GetComponent<Collider2D>().enabled = false;
+        shouldDie = true;
+        
+    }
+
+    void CheckCrushed()
+    {
+        if (shouldDie)
+        {
+            if (deathTimer <= timeBeforeDestroy)
+            {
+                deathTimer += Time.deltaTime;
+            }
+            else
+            {
+                shouldDie = false;
+                Destroy(this.gameObject);
+            }
+        }
     }
     
 
@@ -90,6 +119,12 @@ public class EnemyAI : MonoBehaviour
 
             transform.localPosition = pos;
             transform.localScale = scale;
+        }
+
+        if (velocity.y < -100)
+        {
+            Destroy(this.gameObject);
+            
         }
 
     }

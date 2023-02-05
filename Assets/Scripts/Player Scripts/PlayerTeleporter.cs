@@ -8,6 +8,11 @@ public class PlayerTeleporter : MonoBehaviour
     public bool _hasTeleporter;
     private bool _recentTeleport;
     public float delayInSeconds = 2;
+
+    public Vector3 teleportOffset1;
+
+    public Vector3 teleportOffset2;
+    
     //private bool _teleportedToB;
     private WorldStateSetter _worldStateSetter;
     //public Vector3 teleportDistance;
@@ -45,9 +50,9 @@ public class PlayerTeleporter : MonoBehaviour
     private void TeleportUp()
     {
         //teleport 20 up in relation to self
-        Vector3 up = new Vector3(200,0,0);
+        Vector3 up = new Vector3(300,0,0);
        
-        gameObject.transform.position += up;
+        gameObject.transform.position += teleportOffset1;
         _recentTeleport = true;
         _worldStateSetter._isInWorldA = true;
         StartCoroutine(TeleportDelay());
@@ -56,9 +61,9 @@ public class PlayerTeleporter : MonoBehaviour
     private void TeleportDown()
     {
         //teleport 20 down in relation to self
-        Vector3 down = new Vector3(-200,0,0);
+        Vector3 down = new Vector3(-300,0,0);
        
-        gameObject.transform.position += down;
+        gameObject.transform.position += teleportOffset2;
         _recentTeleport = true;
         _worldStateSetter._isInWorldA = false;
         StartCoroutine(TeleportDelay());
