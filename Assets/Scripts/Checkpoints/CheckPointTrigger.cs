@@ -17,18 +17,6 @@ namespace Checkpoints
         {
             if (col.CompareTag("Player"))
             {
-                // transform.position = new Vector3(gameObject.position.x + offset.x,offset.y, offset.z);
-                if (_worldStateSetter._isInWorldA == true)
-                {
-                    _checkPointManager.SavePointInA();
-
-                }
-
-                if (_worldStateSetter._isInWorldA == false)
-                {
-                    _checkPointManager.SavePointInB();
-                    
-                }
 
             }
         }

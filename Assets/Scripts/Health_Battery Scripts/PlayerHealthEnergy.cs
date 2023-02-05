@@ -16,7 +16,7 @@ public class PlayerHealthEnergy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Danger"))
+        if (col.gameObject.CompareTag("Danger") ||col.gameObject.CompareTag("Enemy"))
         {
             LoseLife();
         }
