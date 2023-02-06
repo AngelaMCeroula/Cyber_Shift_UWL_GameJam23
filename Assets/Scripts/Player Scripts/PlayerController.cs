@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player_Scripts;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
    private Rigidbody2D _rb;
-    public float moveSpeed;
-    public float jumpForce;
+    public float moveSpeed = 5.5f;
+    public float jumpForce = 30;
     private Vector2 moveDirection;
     private float _yVector;
     private bool isGrounded;
+    
     
     
     //public Animator anim;
@@ -21,6 +24,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip playerJump;
     
     public AudioClip playerwalk;
+    
+    //shooting
+    public ProjectileBehaviour projectilePref;
+    public Transform LaunchOffset;
     
 
     void Start()
@@ -37,7 +44,9 @@ public class PlayerController : MonoBehaviour
         
         ProcessInputs();
         Jump();
-        
+        //ShootProjectile();
+        //Movement();
+
         if(_rb.velocity.y == 0) //ESSENTIAL
         {
             isGrounded = true;
@@ -123,5 +132,29 @@ public class PlayerController : MonoBehaviour
      Vector3 Scaler = transform.localScale;
      Scaler.x = Scaler.x * -1;
      transform.localScale = Scaler;
+ }
+
+ void ShootProjectile()
+ {
+     if (Input.GetButtonDown("Fire1"))
+     {
+         Instantiate(projectilePref, LaunchOffset.position, transform.rotation);
+     }
+ }
+
+ private void Movement()
+ {
+     var movement = Input.GetAxis("Horizontal");
+     transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * moveSpeed;
+
+     if (!Mathf.Approximately(0, movement))
+     {
+         transform.rotation = movement > 0 ? Quaternion.Euler(0,180, 0) : Quaternion.identity;
+     }
+
+     if (Input.GetButtonDown("Jump") && Mathf.Abs(_rb.velocity.y) < 0.001f)
+     {
+         _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+     }
  }
 }

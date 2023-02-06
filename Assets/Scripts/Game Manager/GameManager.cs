@@ -8,26 +8,21 @@ public class GameManager : MonoBehaviour
 {
     //private PlayerHealthEnergy _PlayerH_E;
     public GameObject GameOverScreen;
-    public List<Transform> checkpointLocationA;
-    public List<Transform> checkpointLocationB;
-    public GameObject WorldStateManager;
-    
+    public Timer _Timer;
+
+
 
 
     void Start()
     {
-        //_PlayerH_E = GameObject.Find("Player").GetComponent<PlayerHealthEnergy>();
         GameOverScreen.SetActive(false);
-    }
-    
-    void WraptoCheckPoint()
-    {
-
+        _Timer = GameObject.Find("TimeManager").GetComponent<Timer>();
     }
     
     public void GameOver()
     {
         Time.timeScale = 0;
+        _Timer.StopStopwatch();
         GameOverScreen.SetActive(true);
     }
 }

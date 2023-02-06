@@ -9,6 +9,9 @@ TagManager:
   - World A
   - Danger
   - GM
+  - Enemy
+  - pew
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -17,11 +20,11 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Danger
+  - Enemy
+  - Wall
+  - pew
+  - EnemyObstruction
   - 
   - 
   - 
