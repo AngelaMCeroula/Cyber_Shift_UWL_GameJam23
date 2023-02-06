@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - pew
   - Wall
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Wall
   - pew
   - EnemyObstruction
-  - 
+  - WORLD_A
   - 
   - 
   - 
@@ -48,4 +49,31 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackBackGround
+    uniqueID: 109990919
+    locked: 0
+  - name: Background
+    uniqueID: 3650627779
+    locked: 0
+  - name: MidBackGround
+    uniqueID: 1159508797
+    locked: 0
+  - name: FrontGround
+    uniqueID: 1943903907
+    locked: 0
+  - name: Floor/Traps
+    uniqueID: 1802931037
+    locked: 0
+  - name: Collectibles
+    uniqueID: 3407640593
+    locked: 0
+  - name: Enemy
+    uniqueID: 469351535
+    locked: 0
+  - name: Player
+    uniqueID: 2980210733
+    locked: 0
+  - name: Front
+    uniqueID: 3521987097
     locked: 0

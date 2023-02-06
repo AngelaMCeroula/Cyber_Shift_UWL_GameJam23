@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Player_Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerV2 : MonoBehaviour
 {
    private Rigidbody2D _rb;
     public float moveSpeed = 5.5f;
@@ -13,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private float _yVector;
     private bool isGrounded;
     public float shootDelay;
-    
     
     
     
@@ -32,7 +30,6 @@ public class PlayerController : MonoBehaviour
     public ProjectileBehaviour2 projectilePrefRight;
     public Transform LaunchOffset;
     private bool _recentlyshot;
-    public PlayerHealthEnergy _PHE;
 
 
     void Start()
@@ -44,32 +41,11 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-
-       // _yVector = _rb.velocity.y;
-        
         ProcessInputs();
         Jump();
         ShootProjectile();
-        //Movement();
-
-        if(_rb.velocity.y == 0) //ESSENTIAL
-        {
-            isGrounded = true;
-            
-            //anim.SetBool("isRunning", false);
-        }
-
-        if  (_rb.velocity.y == 0 && isGrounded == true && _rb.velocity.x == 0)
-        {
-            //anim.SetBool("isRunning", false);
-        }
-
-        if (_rb.velocity.y != 0 && isGrounded == true)
-        {
-            //anim.SetBool("isRunning", true);
-            //Debug.Log("this should be running");
-        } 
-  }
+        
+    }
   
   void FixedUpdate()
   {
@@ -79,22 +55,11 @@ public class PlayerController : MonoBehaviour
           Flip();
       else if (!_facingRight && moveDirection.x > 0)
           Flip();
-          
-      
-      
   }
   
   void ProcessInputs()
   {
       float moveX = Input.GetAxisRaw("Horizontal");
-      
-    /*  if (isGrounded == true && moveDirection.x != 0)
-      {
-          AudioSource.PlayClipAtPoint(playerwalk, transform.position);
-          
-      }*/
-    
-      
       moveDirection = new Vector2(moveX, _yVector);
   }
   void Move()
@@ -107,29 +72,15 @@ public class PlayerController : MonoBehaviour
  
  void Jump()
  {
-     if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+     if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(_rb.velocity.y) < 0.001f)
      {
          _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
          isGrounded = false;
          //AudioSource.PlayClipAtPoint(playerJump, transform.position);
-         //Debug.Log("NO JUMPING FOR YOU!" + isGrounded);
      }
 
  }
 
- private void OnCollisionEnter2D(Collision2D col)
- {
-     if(!isGrounded)
-     {
-         //Debug.Log("WE CAN JUMP!");
-
-         if (col.gameObject.CompareTag("Ground"))
-         {
-             isGrounded = true;
-             //Debug.Log("ISGROUNDED IS TRUEEEEEE!");
-         }
-     }
- }
 
  void Flip()
  {
@@ -141,13 +92,13 @@ public class PlayerController : MonoBehaviour
 
  void ShootProjectile()
  {
-     if (Input.GetButtonDown("Fire1") && _facingRight == false && _recentlyshot == false && _PHE.battery > 0)
+     if (Input.GetButtonDown("Fire1") && _facingRight == false && _recentlyshot == false)
      {
          Instantiate(projectilePrefLeft, LaunchOffset.position, transform.rotation);
          StartCoroutine(Wait());
      }
 
-     if (Input.GetButtonDown("Fire1") && _facingRight == true && _recentlyshot == false && _PHE.battery > 0)
+     if (Input.GetButtonDown("Fire1") && _facingRight == true && _recentlyshot == false)
      {
          Instantiate(projectilePrefRight, LaunchOffset.position, transform.rotation);
          StartCoroutine(Wait());
@@ -157,10 +108,30 @@ public class PlayerController : MonoBehaviour
 
  IEnumerator Wait()
  {
-     _PHE.UseBat();
+     GetComponent<PlayerHealthEnergy>().UseBat();
      _recentlyshot = true;
      yield return new WaitForSeconds(shootDelay);
      _recentlyshot = false;
 
  }
+ 
+ 
+
+ private void Movement()
+ {
+     var movement = Input.GetAxis("Horizontal");
+     transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * moveSpeed;
+
+     if (!Mathf.Approximately(0, movement))
+     {
+         transform.rotation = movement > 0 ? Quaternion.Euler(0,180, 0) : Quaternion.identity;
+     }
+
+     if (Input.GetButtonDown("Jump") && Mathf.Abs(_rb.velocity.y) < 0.001f)
+     {
+         _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+     }
+ }
 }
+
+

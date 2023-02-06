@@ -9,12 +9,35 @@ public class WorldStateSetter : MonoBehaviour
     public GameObject WorldAIndicator;
     public GameObject WorldBIndicator;
 
+    public GameObject WorldABG;
+    public GameObject WorldBBG;
+
     private void Update()
     {
+        if (_isInWorldA == true)
+        {
+            WorldABG.SetActive(true);
+            WorldBBG.SetActive(false);
+            WorldBIndicator.SetActive(false);
+            WorldAIndicator.SetActive(true);
+        }
+
+        else
+        {
+            WorldBBG.SetActive(true);
+            WorldABG.SetActive(false);
+            WorldBIndicator.SetActive(true);
+            WorldAIndicator.SetActive(false);
+            
+        }
+      
+        /* 
         switch (_isInWorldA)
         {
             case false:
             {
+                WorldBBG.SetActive(true);
+                WorldABG.SetActive(false);
                 WorldBIndicator.SetActive(true);
                 WorldAIndicator.SetActive(false);
                 break;
@@ -22,12 +45,16 @@ public class WorldStateSetter : MonoBehaviour
 
             case true:
             {
+                WorldABG.SetActive(true);
+                WorldBBG.SetActive(false);
                 WorldBIndicator.SetActive(false);
                 WorldAIndicator.SetActive(true);
                 break;
                 
             }
+            
 
-        }       
+        }    
+        */   
     }
 }

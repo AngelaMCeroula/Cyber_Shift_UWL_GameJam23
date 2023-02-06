@@ -5,51 +5,40 @@ namespace Checkpoints
 {
     public class CheckPointManager : MonoBehaviour
     {
-        public List<Transform> checkpointLocationA;
-        public List<Transform> checkpointLocationB;
         private WorldStateSetter _worldStateSetter;
-       // private 
-
-
+        public List<GameObject> checkpointsA; 
+        public List<GameObject> checkpointsB;
+        private int currentCheckpoint;
+        
         private void Start()
         {
             _worldStateSetter = GameObject.Find("WorldStateManager").GetComponent<WorldStateSetter>();
         }
 
-        public void SavePointInA()
+        public GameObject GetLastCheckpoint()
         {
-            
-           
-        }
-
-        public void SavePointInB()
-        {
-           
-        }
-        
-        
-
-
-        void WraptoCheckPoint()
-        {
-            switch (_worldStateSetter._isInWorldA)
+            if (_worldStateSetter._isInWorldA)
             {
-                case true:
-                {
-                
-                    break;
-                }
-
-                case false:
-                {
-                
-                    break;
-                }        
-
+                return checkpointsA[currentCheckpoint];
             }
-
+            else
+            {
+                return checkpointsB[currentCheckpoint];
+            }
         }
 
-    
+        public void SaveCurrentCheckpoint(GameObject checkpoint)
+        {
+            if (_worldStateSetter._isInWorldA)
+            {
+                if (checkpointsA.Contains(checkpoint))
+                    currentCheckpoint = checkpointsA.IndexOf(checkpoint);
+            }
+            else
+            {
+                if (checkpointsB.Contains(checkpoint))
+                    currentCheckpoint = checkpointsB.IndexOf(checkpoint);
+            }
+        }
     }
 }
