@@ -12,7 +12,7 @@ public class Scrap1_Pickup : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Debug.Log("Scrap1");
-            
+            //UpdateUI
             AddPoint();
             //PlaySound();
             Destroy(gameObject);

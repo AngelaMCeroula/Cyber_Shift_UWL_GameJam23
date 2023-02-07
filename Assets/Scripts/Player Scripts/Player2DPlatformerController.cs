@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Player_Scripts;
@@ -22,15 +23,20 @@ public class Player2DPlatformerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        Movement();
+        //Movement();
         ShootProjectile();
         
     }
-    
+
+    private void FixedUpdate()
+    {
+        Movement();
+    }
+
     private void Movement()
     {
         var movement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * moveSpeed;
+        transform.position += new Vector3(movement, 0, 0) * (Time.deltaTime * moveSpeed);
 
         if (!Mathf.Approximately(0, movement))
         {
