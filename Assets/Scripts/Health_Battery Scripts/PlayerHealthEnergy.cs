@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Checkpoints;
 using UnityEngine;
 
 public class PlayerHealthEnergy : MonoBehaviour
@@ -10,15 +11,22 @@ public class PlayerHealthEnergy : MonoBehaviour
     private int _batteryMaxCapacity = 5;
     public GameManager GameManager;
     public int timePerCharge = 20;
+    public int respawnDelay;
     private bool charging = false;
+    private CheckPointManager CP_manager;
 
 
+    private void Start()
+    {
+        CP_manager = GameObject.Find("GameManager").GetComponent<CheckPointManager>();
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Danger") || col.gameObject.CompareTag("Enemy"))
         {
             LoseLife();
+            
         }
     }
 
@@ -35,6 +43,8 @@ public class PlayerHealthEnergy : MonoBehaviour
         if (lives >= 1)
         {
             lives--;
+            StartCoroutine(RespawnDelay());
+            
         }
 
         if (lives < 1)
@@ -83,6 +93,14 @@ public class PlayerHealthEnergy : MonoBehaviour
         {
             StartCoroutine(Recharge());
         }
+    }
+
+    IEnumerator RespawnDelay()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(respawnDelay);
+        Time.timeScale = 1;
+        gameObject.transform.position = CP_manager.GetLastCheckpoint().transform.position;
     }
 
 }
