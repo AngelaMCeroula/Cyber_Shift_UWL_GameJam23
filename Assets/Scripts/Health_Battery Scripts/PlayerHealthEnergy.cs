@@ -97,9 +97,8 @@ public class PlayerHealthEnergy : MonoBehaviour
 
     IEnumerator RespawnDelay()
     {
-        Time.timeScale = 0;
+        
         yield return new WaitForSecondsRealtime(respawnDelay);
-        Time.timeScale = 1;
         gameObject.transform.position = CP_manager.GetLastCheckpoint().transform.position;
     }
 

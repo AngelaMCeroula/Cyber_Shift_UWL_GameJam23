@@ -8,14 +8,14 @@ public class PlayerTeleporter : MonoBehaviour
     public bool _hasTeleporter;
     private bool _recentTeleport;
     public float delayInSeconds = 2;
-
     public Vector3 teleportOffset1;
-
     public Vector3 teleportOffset2;
     
     //private bool _teleportedToB;
     private WorldStateSetter _worldStateSetter;
-    //public Vector3 teleportDistance;
+
+    public GameObject transitionImg;
+    public float transitionTime;
 
     private void Start()
     {
@@ -23,6 +23,7 @@ public class PlayerTeleporter : MonoBehaviour
         _recentTeleport = false;
         //_teleportedToB = false;
         _hasTeleporter = false;
+        transitionImg.SetActive(false);
     }
 
     private void Update()
@@ -56,6 +57,7 @@ public class PlayerTeleporter : MonoBehaviour
         _recentTeleport = true;
         _worldStateSetter._isInWorldA = true;
         StartCoroutine(TeleportDelay());
+        //StartCoroutine(Transition());
     }
     
     private void TeleportDown()
@@ -67,12 +69,20 @@ public class PlayerTeleporter : MonoBehaviour
         _recentTeleport = true;
         _worldStateSetter._isInWorldA = false;
         StartCoroutine(TeleportDelay());
+        //StartCoroutine(Transition());
     }
     
     private IEnumerator TeleportDelay()
     {
         yield return new WaitForSeconds(delayInSeconds);
         _recentTeleport = false;
+    }
+
+    private IEnumerator Transition()
+    {
+        transitionImg.SetActive(true);
+        yield return new WaitForSeconds(transitionTime);
+        transitionImg.SetActive(false);
     }
 
  
