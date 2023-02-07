@@ -17,13 +17,14 @@ public class CameraFollowsPlayer : MonoBehaviour
     void Update()
     {
         //CameraFollow();
+        CameraFollow4();
     }
 
     private void FixedUpdate()
     {
         //CameraFollow2();
         //CameraFollow3();
-        CameraFollow4();
+        //CameraFollow4();
     }
 
     void CameraFollow()
