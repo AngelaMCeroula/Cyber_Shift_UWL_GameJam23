@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     //private PlayerHealthEnergy _PlayerH_E;
     public GameObject GameOverScreen;
     public Timer _Timer;
+    private PlayerController pController;
 
 
 
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         GameOverScreen.SetActive(false);
         _Timer = GameObject.Find("TimeManager").GetComponent<Timer>();
+        pController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
     
     public void GameOver()
@@ -24,5 +26,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         _Timer.StopStopwatch();
         GameOverScreen.SetActive(true);
+        pController.enabled = false;
     }
 }

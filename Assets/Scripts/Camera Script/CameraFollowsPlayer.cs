@@ -8,7 +8,7 @@ using UnityEngine;
 public class CameraFollowsPlayer : MonoBehaviour
 {
     public Transform player;
-    public Vector3 offset;
+    private Vector3 offset;
     public Vector3 offset2;
     [Range(1,10)]public float smoothFactor;
     public Vector3 minValues, maxValues;
