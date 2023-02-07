@@ -45,12 +45,11 @@ public class PlayerHealthEnergy : MonoBehaviour
 
     private void Update()
     {
-        UseBat();
+        //UseBat();
     }
 
-   
 
-    void UseBat()
+    public void TestBat()
     {
         if (Input.GetKeyDown(KeyCode.E) && battery > 0)
         {
@@ -61,6 +60,17 @@ public class PlayerHealthEnergy : MonoBehaviour
             }
         }
     }
+
+    public void UseBat()
+    {
+        battery--;
+        if (battery < _batteryMaxCapacity && charging == false)
+        {
+            StartCoroutine(Recharge());
+        }
+    }
+
+
 
     IEnumerator Recharge()
     {
