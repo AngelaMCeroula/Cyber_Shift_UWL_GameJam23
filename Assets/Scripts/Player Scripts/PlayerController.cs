@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         if(_rb.velocity.y == 0) //ESSENTIAL
         {
             isGrounded = true;
+            
             //anim.SetBool("isRunning", false);
             animator.ResetTrigger("IsShot");
             animator.ResetTrigger("IsRunning");
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
         if  (_rb.velocity.y == 0 && isGrounded == true && _rb.velocity.x == 0)
         {
-            //anim.SetBool("isRunning", false);
+            //animation.SetBool("isRunning", false);
             animator.ResetTrigger("IsShot");
             animator.ResetTrigger("IsRunning");
             animator.ResetTrigger("IsJumping");
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
         if (_rb.velocity.y != 0 && isGrounded == true)
         {
-            //anim.SetBool("isRunning", true);
+            //animation.SetBool("isRunning", true);
             Debug.Log("this should be running");
             animator.ResetTrigger("IsShot");
             animator.ResetTrigger("IsIdle");
@@ -100,7 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             //lias code
             Debug.Log("JUMP JUMP JUMP");
-            //animator.ResetTrigger("IsRunning");
+            animator.ResetTrigger("IsRunning");
             animator.ResetTrigger("IsShot");
             animator.ResetTrigger("IsIdle");
             animator.ResetTrigger("IsRunning");
