@@ -58,62 +58,74 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(moveDirection.x));
         
         
-        
-        
         // _yVector = _rb.velocity.y;
         
         ProcessInputs();
         Jump();
         ShootProjectile();
-        //Movement();
-
+        
         if(_rb.velocity.y == 0) //ESSENTIAL
         {
             isGrounded = true;
-            //anim.SetBool("isRunning", false);
-            animator.ResetTrigger("IsShot");
-            animator.ResetTrigger("IsRunning");
-            animator.ResetTrigger("IsJumping");
-            animator.SetTrigger("IsIdle");
+            if (Time.timeScale != 0)
+            {
+                //anim.SetBool("isRunning", false);
+                animator.ResetTrigger("IsShot");
+                animator.ResetTrigger("IsRunning");
+                animator.ResetTrigger("IsJumping");
+                animator.SetTrigger("IsIdle");
+            }
         }
 
         if  (_rb.velocity.y == 0 && isGrounded == true && _rb.velocity.x == 0)
         {
-            //anim.SetBool("isRunning", false);
-            animator.ResetTrigger("IsShot");
-            animator.ResetTrigger("IsRunning");
-            animator.ResetTrigger("IsJumping");
-            animator.SetTrigger("IsIdle");
+            if (Time.timeScale != 0)
+            {
+                //anim.SetBool("isRunning", false);
+                animator.ResetTrigger("IsShot");
+                animator.ResetTrigger("IsRunning");
+                animator.ResetTrigger("IsJumping");
+                animator.SetTrigger("IsIdle");
+            }
         }
 
         if (_rb.velocity.y != 0 && isGrounded == true)
         {
-            //anim.SetBool("isRunning", true);
-            Debug.Log("this should be running");
-            animator.ResetTrigger("IsShot");
-            animator.ResetTrigger("IsIdle");
-            animator.ResetTrigger("IsJumping");
-            animator.SetTrigger("IsRunning");
+            if (Time.timeScale != 0)
+            {
+                //anim.SetBool("isRunning", true);
+                Debug.Log("this should be running");
+                animator.ResetTrigger("IsShot");
+                animator.ResetTrigger("IsIdle");
+                animator.ResetTrigger("IsJumping");
+                animator.SetTrigger("IsRunning");
+            }
         }
 
         if (_rb.velocity.y > 0)
         {
-            //lias code
-            Debug.Log("JUMP JUMP JUMP");
-            //animator.ResetTrigger("IsRunning");
-            animator.ResetTrigger("IsShot");
-            animator.ResetTrigger("IsIdle");
-            animator.ResetTrigger("IsRunning");
-            animator.SetTrigger("IsJumping");
+            if (Time.timeScale != 0)
+            {
+                //lias code
+                Debug.Log("JUMP JUMP JUMP");
+                //animator.ResetTrigger("IsRunning");
+                animator.ResetTrigger("IsShot");
+                animator.ResetTrigger("IsIdle");
+                animator.ResetTrigger("IsRunning");
+                animator.SetTrigger("IsJumping");
+            }
         }
     }
     //lias code
     public void OnLanding()
     {
-        animator.ResetTrigger("IsShot");
-        animator.ResetTrigger("IsJumping");
-        animator.ResetTrigger("IsRunning");
-        animator.SetTrigger("IsIdle");
+        if (Time.timeScale != 0)
+        {
+            animator.ResetTrigger("IsShot");
+            animator.ResetTrigger("IsJumping");
+            animator.ResetTrigger("IsRunning");
+            animator.SetTrigger("IsIdle");
+        }
     }
   
     
@@ -127,22 +139,12 @@ public class PlayerController : MonoBehaviour
             Flip();
         else if (!_facingRight && moveDirection.x > 0)
             Flip();
-          
-      
-      
+
     }
   
     void ProcessInputs()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
-
-        /*  if (isGrounded == true && moveDirection.x != 0)
-          {
-              AudioSource.PlayClipAtPoint(playerwalk, transform.position);
-              
-          }*/
-    
-      
         moveDirection = new Vector2(moveX, _yVector);
     }
     void Move()
@@ -169,12 +171,10 @@ public class PlayerController : MonoBehaviour
     {
         if(!isGrounded)
         {
-            //Debug.Log("WE CAN JUMP!");
-
             if (col.gameObject.CompareTag("Ground"))
             {
                 isGrounded = true;
-                //Debug.Log("ISGROUNDED IS TRUEEEEEE!");
+               
             }
         }
     }
@@ -189,27 +189,20 @@ public class PlayerController : MonoBehaviour
 
     void ShootProjectile()
     {
-        if (Input.GetButtonDown("Fire1") && _facingRight == false && _recentlyshot == false && _PHE.battery > 0)
+        if (Input.GetButtonDown("Fire1") && _facingRight == false && _recentlyshot == false && _PHE.battery > 0 && Time.timeScale != 0)
         {
-            
             animator.SetTrigger("IsShot");
             Instantiate(projectilePrefLeft, LaunchOffset.position, transform.rotation);
             StartCoroutine(Wait());
-            
-         
         }
 
-        if (Input.GetButtonDown("Fire1") && _facingRight == true && _recentlyshot == false && _PHE.battery > 0)
+        if (Input.GetButtonDown("Fire1") && _facingRight == true && _recentlyshot == false && _PHE.battery > 0 && Time.timeScale != 0)
         {
-            
             animator.SetTrigger("IsShot");
             Instantiate(projectilePrefRight, LaunchOffset.position, transform.rotation);
             StartCoroutine(Wait());
-         
         }
-     
     }
-
     IEnumerator Wait()
     {
         _PHE.UseBat();
