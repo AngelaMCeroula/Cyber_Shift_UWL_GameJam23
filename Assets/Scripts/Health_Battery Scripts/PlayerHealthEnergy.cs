@@ -40,6 +40,45 @@ public class PlayerHealthEnergy : MonoBehaviour
 
     void LoseLife()
     {
+
+        switch (lives)
+        {
+            case 5:
+            {
+                lives--;
+                StartCoroutine(RespawnDelay());
+                break;
+            }
+            case 4:
+            {
+                lives--;
+                StartCoroutine(RespawnDelay());
+                break;
+            }
+            case 3:
+            {
+                lives--;
+                StartCoroutine(RespawnDelay());
+                break;
+            }
+            case 2:
+            {
+                lives--;
+                StartCoroutine(RespawnDelay());
+                break;
+            }
+            case 1:
+            {
+                lives--;
+                GameManager.GameOver();
+                break;
+            }
+            
+        }
+        
+        
+     /*
+    
         if (lives >= 1)
         {
             lives--;
@@ -51,6 +90,8 @@ public class PlayerHealthEnergy : MonoBehaviour
         {
             GameManager.GameOver();
         }
+        
+        */
     }
 
     private void Update()
@@ -97,9 +138,10 @@ public class PlayerHealthEnergy : MonoBehaviour
 
     IEnumerator RespawnDelay()
     {
-        
+        Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(respawnDelay);
         gameObject.transform.position = CP_manager.GetLastCheckpoint().transform.position;
+        Time.timeScale = 1;
     }
 
 }
