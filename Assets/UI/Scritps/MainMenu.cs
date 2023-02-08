@@ -7,12 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Scenes/SampleScene"); // change to game level name later 
+        SceneManager.LoadScene("GameLevel");
     }
 
     public void ExitGame()
     {
         Debug.Log("Exit Game");
         Application.Quit();
+    }
+
+    public void MainScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
