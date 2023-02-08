@@ -713,8 +713,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isInWorldA: 0
-  WorldAIndicator: {fileID: 0}
-  WorldBIndicator: {fileID: 0}
+  WorldAIndicator: {fileID: 4317838767027949566}
+  WorldBIndicator: {fileID: 4317838767494848387}
   WorldABG: {fileID: 1702127008}
   WorldBBG: {fileID: 70639772}
 --- !u!4 &155996169 stripped
