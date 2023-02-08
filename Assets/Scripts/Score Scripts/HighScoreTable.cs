@@ -16,28 +16,41 @@ public class HighscoreTable : MonoBehaviour
     public float templateHeight = 40;
     private int endScore;
     private float endTime;
+    public GameObject InputFieldGameObject;
+    private string pName;
 
-    private Color colour_gold;
-    private Color colour_silver;
-    private Color colour_bronze;
+    public GameObject lBoardCanvas;
+    public GameObject userNameCanvas;
 
     //private List<HighscoreEntry> highscoreEntryList;
     private List<Transform> highscoreEntryTranformList;
 
 
+    public void StoreName()
+    {
+        //GetPlayer Input then trigger addHighscoreEntry
+
+        pName = InputFieldGameObject.GetComponent<TextMeshProUGUI>().text;
+        userNameCanvas.SetActive(false);
+        lBoardCanvas.SetActive(true);
+        AddHighscoreEntry(endScore, pName, endTime);
+        LoadTable();
+        
+
+    }
+    
     private void Start()
     {
-        colour_gold = new Color(255, 215, 0, 255);
-        colour_silver = new Color(192, 192, 192, 255);
-        colour_bronze = new Color(205, 127, 50, 255);
-        
         //GetPlayer Input then trigegr addHighscoreEntry
-        
-        
-        AddHighscoreEntry(endScore,"POI", endTime);
-        
+       
+
+        //AddHighscoreEntry(endScore, pName, endTime);
+        //AddHighscoreEntry(int score, string name, float time)
+        //LoadTable();
     }
 
+    
+    
     private void Awake()
     {
         //entryContainer = transform.Find("highscoreEntryContainer");
@@ -46,12 +59,24 @@ public class HighscoreTable : MonoBehaviour
         entryTemplate.gameObject.SetActive(false);
         endScore = ScoreManager.score;
         endTime = Timer._currentTime;
-        
+    }
 
+    private void LoadTable()
+    {
+        
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
         
         // sort entry list by score
+
+        if (highscores.highscoreEntryList.Count > 10) // added in
+        {
+            for (int h = highscores.highscoreEntryList.Count; h > 10; h--)
+            {
+                highscores.highscoreEntryList.RemoveAt(10);
+            }
+        }
+
         for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
         {
             for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++)
@@ -72,6 +97,7 @@ public class HighscoreTable : MonoBehaviour
         {
             CreateHighScoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTranformList);
         }
+        
     }
 
     private void CreateHighScoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List <Transform> transformList)
@@ -88,13 +114,13 @@ public class HighscoreTable : MonoBehaviour
         string rankString;
         switch (rank)
         {
-            default: rankString = rank + "TH"; break;
+            default: rankString = rank + "th"; break;
             case 1:
-                rankString = "1ST"; break;
+                rankString = "1st"; break;
             case 2:
-                rankString = "2ND"; break;
+                rankString = "2nd"; break;
             case 3:
-                rankString = "3RD"; break;
+                rankString = "3rd"; break;
         }
 
         
@@ -123,27 +149,16 @@ public class HighscoreTable : MonoBehaviour
                 entryTransform.Find("badge").gameObject.SetActive(false);
                 break;
             case 1:
-                entryTransform.Find("badge").GetComponent<Image>().color = colour_gold;
+                entryTransform.Find("badge").GetComponent<Image>().color = Color.yellow;
                 break;
             case 2:
-                entryTransform.Find("badge").GetComponent<Image>().color = colour_silver;
+                entryTransform.Find("badge").GetComponent<Image>().color = Color.grey;
                 break;
             case 3:
-                entryTransform.Find("badge").GetComponent<Image>().color = colour_bronze;
+                entryTransform.Find("badge").GetComponent<Image>().color = Color.red;
                 break;
         }
-        {
-            
-        }
-        /*
-        if (rank == 1)
-        {
-         entryTransform.Find("Pos_text").GetComponent<TextMeshProUGUI>().color = Color.green;
-         entryTransform.Find("Score_text").GetComponent<TextMeshProUGUI>().color = Color.green;  
-         entryTransform.Find("Name_text").GetComponent<TextMeshProUGUI>().color = Color.green;  
-        }
-        */
-        
+       
         transformList.Add(entryTransform);
         
     }
@@ -152,6 +167,7 @@ public class HighscoreTable : MonoBehaviour
     { 
         //create highscore entry
         HighscoreEntry highscoreEntry = new HighscoreEntry{score = score, name = name, time = time};
+        
         
         //load saved highscores
         string jsonString = PlayerPrefs.GetString("highscoreTable");
@@ -170,10 +186,17 @@ public class HighscoreTable : MonoBehaviour
         highscores.highscoreEntryList.Add(highscoreEntry);
 
         // save updated highscores
+        if (highscores.highscoreEntryList.Count > 10) // addedin
+        {
+            for (int h = highscores.highscoreEntryList.Count; h>10; h--)
+            {
+                highscores.highscoreEntryList.RemoveAt(10);
+            }
+        }
+        
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
-
     }
 
     private class Highscores
@@ -182,16 +205,13 @@ public class HighscoreTable : MonoBehaviour
     }
     
     // Represents a single High score entry
-
     [System.Serializable]
     private class HighscoreEntry
     {
-        
         public string name;
         public int score;
         public float time;
         
-
     }
     
 
