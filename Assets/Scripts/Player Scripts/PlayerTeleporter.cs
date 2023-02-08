@@ -14,16 +14,18 @@ public class PlayerTeleporter : MonoBehaviour
     //private bool _teleportedToB;
     private WorldStateSetter _worldStateSetter;
 
-    public GameObject transitionImg;
-    public float transitionTime;
-
+    public GameObject ParticlesEvent;
+    public float ParticlesTimer;
+    
+        
+    
     private void Start()
     {
         _worldStateSetter = GameObject.Find("WorldStateManager").GetComponent<WorldStateSetter>();
         _recentTeleport = false;
         //_teleportedToB = false;
         _hasTeleporter = false;
-        transitionImg.SetActive(false);
+        ParticlesEvent.SetActive(false);
     }
 
     private void Update()
@@ -57,7 +59,7 @@ public class PlayerTeleporter : MonoBehaviour
         _recentTeleport = true;
         _worldStateSetter._isInWorldA = true;
         StartCoroutine(TeleportDelay());
-        //StartCoroutine(Transition());
+        StartCoroutine(Transition());
     }
     
     private void TeleportDown()
@@ -69,7 +71,7 @@ public class PlayerTeleporter : MonoBehaviour
         _recentTeleport = true;
         _worldStateSetter._isInWorldA = false;
         StartCoroutine(TeleportDelay());
-        //StartCoroutine(Transition());
+        StartCoroutine(Transition());
     }
     
     private IEnumerator TeleportDelay()
@@ -78,11 +80,15 @@ public class PlayerTeleporter : MonoBehaviour
         _recentTeleport = false;
     }
 
-    private IEnumerator Transition()
+    IEnumerator Transition()
     {
-        transitionImg.SetActive(true);
-        yield return new WaitForSeconds(transitionTime);
-        transitionImg.SetActive(false);
+        ParticlesEvent.SetActive(true);
+        //trigger start here, reference gameObject with "transitionParticles."
+        ParticlesEvent.GetComponent<ParticleSystem>().Play();
+        yield return new WaitForSeconds(ParticlesTimer);
+        //trigger end here 
+        
+        ParticlesEvent.SetActive(false);
     }
 
  
