@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3410455082457476650, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 277
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410455082457476650, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 170
+      objectReference: {fileID: 0}
     - target: {fileID: 3410455083498198969, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -217,6 +225,26 @@ PrefabInstance:
     - target: {fileID: 3410455083498198974, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
       propertyPath: m_Name
       value: GameOverScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410455083966404801, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410455084270687056, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -318
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410455084270687056, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 169.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410455084576313648, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3410455084576313648, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5fdffada731105499250b401d3d6b5f, type: 3}
