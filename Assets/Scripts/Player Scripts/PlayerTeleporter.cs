@@ -85,6 +85,7 @@ public class PlayerTeleporter : MonoBehaviour
         ParticlesEvent.SetActive(true);
         //trigger start here, reference gameObject with "transitionParticles."
         ParticlesEvent.GetComponent<ParticleSystem>().Play();
+        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerDimensionShift", GetComponent<Transform>().position);
         yield return new WaitForSeconds(ParticlesTimer);
         //trigger end here 
         

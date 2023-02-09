@@ -14,7 +14,7 @@ public class Scrap1_Pickup : MonoBehaviour
             Debug.Log("Scrap1");
             //UpdateUI
             AddPoint();
-            //PlaySound();
+            PlaySound();
             Destroy(gameObject);
         }
             
@@ -22,7 +22,7 @@ public class Scrap1_Pickup : MonoBehaviour
 
     void PlaySound()
     {
-        AudioSource.PlayClipAtPoint(scrap1sound, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/ItemPickUp", GetComponent<Transform>().position);
     }
 
     void AddPoint()

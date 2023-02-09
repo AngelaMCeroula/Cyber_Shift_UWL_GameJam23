@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: ../../GamejamAudio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638115673052446060
+  lastModified: 638115723207580622
   FileSizes:
   - Name: Desktop
-    Value: 2021184
+    Value: 2009568
   Exists: 1
 --- !u!114 &-6345658521149097602
 MonoBehaviour:
@@ -195,10 +195,10 @@ MonoBehaviour:
   Path: ../../GamejamAudio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638115673052466008
+  lastModified: 638115723207600578
   FileSizes:
   - Name: Desktop
-    Value: 1624
+    Value: 1588
   Exists: 1
 --- !u!114 &-48384325691837635
 MonoBehaviour:
@@ -261,7 +261,7 @@ MonoBehaviour:
   - {fileID: -6520165923809585396}
   StringsBanks:
   - {fileID: -719513350025786878}
-  cacheTime: 638115673052466008
+  cacheTime: 638115723207600578
   cacheVersion: 131601
 --- !u!114 &78921322640323807
 MonoBehaviour:

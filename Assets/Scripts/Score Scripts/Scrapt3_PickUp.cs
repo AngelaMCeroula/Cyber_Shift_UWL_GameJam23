@@ -13,7 +13,7 @@ public class Scrapt3_PickUp : MonoBehaviour
         {
             Debug.Log("Scrap3");
             AddPoint3();
-            //PlaySound();
+            PlaySound();
             Destroy(gameObject);
         }
             
@@ -22,7 +22,7 @@ public class Scrapt3_PickUp : MonoBehaviour
     
     void PlaySound()
     {
-        AudioSource.PlayClipAtPoint(scrap3sound, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/ItemPickUp", GetComponent<Transform>().position);
     }
 
     void AddPoint3()

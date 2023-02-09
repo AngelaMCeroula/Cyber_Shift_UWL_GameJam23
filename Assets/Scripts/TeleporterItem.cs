@@ -25,6 +25,7 @@ public class TeleporterItem : MonoBehaviour
             _playerTeleporter._hasTeleporter = true;
             _timer.StartStopWatch();
             _pressShift.TeleportText();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/ItemPickUp", GetComponent<Transform>().position);
             Destroy(gameObject);
             
         }
