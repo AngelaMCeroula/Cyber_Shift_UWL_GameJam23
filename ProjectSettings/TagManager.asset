@@ -80,3 +80,6 @@ TagManager:
   - name: Portal
     uniqueID: 3995657927
     locked: 0
+  - name: Front2
+    uniqueID: 2679115915
+    locked: 0
