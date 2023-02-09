@@ -1605,6 +1605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 273680289}
+  - component: {fileID: 273680290}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1629,6 +1630,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &273680290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273680288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37764c3988bea7d42910e2e8fd5e9307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayInSeconds: 1
 --- !u!4 &275037931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6946940989004752375, guid: ced8c71bc4f625a4192c9e6715fe8cf8, type: 3}
@@ -12612,6 +12626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37764c3988bea7d42910e2e8fd5e9307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayInSeconds: 1
 --- !u!1 &1080408637
 GameObject:
   m_ObjectHideFlags: 0
@@ -14987,6 +15002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fe3600d495c2d41b9b23f3a78c4e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayInSeconds: 1
 --- !u!1 &1356209194
 GameObject:
   m_ObjectHideFlags: 0
@@ -15003,7 +15019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1356209195
 Transform:
   m_ObjectHideFlags: 0
@@ -18595,6 +18611,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 273680290}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlaySoundOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1842366951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19400,6 +19428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fe3600d495c2d41b9b23f3a78c4e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delayInSeconds: 1
 --- !u!1 &1961819378
 GameObject:
   m_ObjectHideFlags: 0
@@ -27744,135 +27773,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1961819382}
-    m_ColliderPaths:
-    - - X: 4889999872
-        Y: 90000000
-      - X: 4819999744
-        Y: 90000000
-      - X: 4819999744
-        Y: 40000000
-      - X: 4889999872
-        Y: 40000000
-    - - X: 2849999872
-        Y: 30000000
-      - X: 2760000000
-        Y: 30000000
-      - X: 2760000000
-        Y: 90000000
-      - X: 2630000128
-        Y: 90000000
-      - X: 2630000128
-        Y: 40000000
-      - X: 2649999872
-        Y: 40000000
-      - X: 2649999872
-        Y: -30000000
-      - X: 2849999872
-        Y: -30000000
-    - - X: 1860000000
-        Y: 90000000
-      - X: 1820000000
-        Y: 90000000
-      - X: 1820000000
-        Y: 40000000
-      - X: 1860000000
-        Y: 40000000
-    - - X: 820000000
-        Y: 40000000
-      - X: 890000000
-        Y: 40000000
-      - X: 890000000
-        Y: 90000000
-      - X: 810000000
-        Y: 90000000
-      - X: 810000000
-        Y: 20000000
-      - X: 820000000
-        Y: 20000000
-    - - X: 6849999972
-        Y: -50000041
-      - X: 6849999972
-        Y: 30000041
-      - X: 6849999913
-        Y: 30000100
-      - X: 6750000128
-        Y: 30000100
-      - X: 6750000128
-        Y: 90000000
-      - X: 6630000128
-        Y: 90000000
-      - X: 6630000128
-        Y: 40000000
-      - X: 6639999900
-        Y: 40000000
-      - X: 6639999900
-        Y: -50000041
-      - X: 6639999959
-        Y: -50000100
-      - X: 6849999913
-        Y: -50000100
-    - - X: 6080000000
-        Y: 50000000
-      - X: 6049999872
-        Y: 50000000
-      - X: 6049999872
-        Y: 40000000
-      - X: 6040000000
-        Y: 40000000
-      - X: 6040000000
-        Y: -50000000
-      - X: 6080000000
-        Y: -50000000
-    - - X: -160000000
-        Y: 50000000
-      - X: -250000000
-        Y: 50000000
-      - X: -250000000
-        Y: 20000000
-      - X: -330000000
-        Y: 20000000
-      - X: -330000000
-        Y: -40000000
-      - X: -160000000
-        Y: -40000000
-    - - X: 3960000000
-        Y: 40000000
-      - X: 3880000000
-        Y: 40000000
-      - X: 3880000000
-        Y: -40000000
-      - X: 3960000000
-        Y: -40000000
-    - - X: 5430000128
-        Y: 30000000
-      - X: 5390000128
-        Y: 30000000
-      - X: 5390000128
-        Y: -20000000
-      - X: 5430000128
-        Y: -20000000
-    - - X: 440000000
-        Y: 30000000
-      - X: 400000000
-        Y: 30000000
-      - X: 400000000
-        Y: -20000000
-      - X: 440000000
-        Y: -20000000
-    - - X: 5049999872
-        Y: 0
-      - X: 5030000128
-        Y: 0
-      - X: 5030000128
-        Y: 10000000
-      - X: 5009999872
-        Y: 10000000
-      - X: 5009999872
-        Y: -20000000
-      - X: 5049999872
-        Y: -20000000
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 685, y: -5.00001}
@@ -78616,7 +78517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6455388202990155828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.64, y: -0.93, z: 0}
+  m_LocalPosition: {x: -0.436, y: -0.97, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:

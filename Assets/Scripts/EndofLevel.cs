@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class EndofLevel : MonoBehaviour
 {
     private Timer timer;
+    public float delayInSeconds = 0;
 
     private void Start()
     {
@@ -18,9 +19,17 @@ public class EndofLevel : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             timer.StopStopwatch();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/InGame/Level/LevelEnd", GetComponent<Transform>().position);
             SceneManager.LoadScene("FinalScene");
+            //StartCoroutine(EndSceneDelay());
         }
-     
+
+    }
+
+    IEnumerator EndSceneDelay()
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        SceneManager.LoadScene("FinalScene");
         
     }
 }
