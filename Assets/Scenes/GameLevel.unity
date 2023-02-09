@@ -12538,8 +12538,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071942923}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.023297947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12551,7 +12551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -3.3080833, y: 3.3118393}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1071942925
@@ -18603,7 +18603,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1071942928}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: MainScene
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18613,7 +18613,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 273680290}
+      - m_Target: {fileID: 1071942928}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlaySoundOut
         m_Mode: 1
@@ -90464,6 +90464,7 @@ GameObject:
   - component: {fileID: 6455388202990155853}
   - component: {fileID: 6455388202990155843}
   - component: {fileID: 6455388202990155856}
+  - component: {fileID: 6455388202990155857}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -90693,6 +90694,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ani: {fileID: 6455388202990155843}
+--- !u!114 &6455388202990155857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6455388202990155828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe7bb5776fe39c45a57b7d30761b83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTerrain: 0
 --- !u!1001 &6680617441014286469
 PrefabInstance:
   m_ObjectHideFlags: 0

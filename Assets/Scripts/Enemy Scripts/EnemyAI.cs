@@ -44,6 +44,7 @@ public class EnemyAI : MonoBehaviour
     {
         Debug.Log("crush crush crush");
         _state = EnemyState.Dead;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/InGame/EnemySFX/EnemyDeath", GetComponent<Transform>().position);
         //GetComponent<Animator>().SetBool("isCrushed", true);
         GetComponent<Collider2D>().enabled = false;
         shouldDie = true;

@@ -11,6 +11,7 @@ public class EnterMainMenu : MonoBehaviour
     private void Start()
     {
         StartCanvas = GameObject.Find("StartCanvas");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/InGame/Level/BackgroundMusic", GetComponent<Transform>().position);
     }
 
     private void Update()
