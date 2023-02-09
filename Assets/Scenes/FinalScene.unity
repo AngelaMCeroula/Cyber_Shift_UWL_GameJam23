@@ -977,6 +977,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2329df93cd2c12148b8370ec9b7cd361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entryContainer: {fileID: 607453985}
+  entryTemplate: {fileID: 634704256}
+  templateHeight: 40
+  InputFieldGameObject: {fileID: 471004127}
+  lBoardCanvas: {fileID: 1803650913}
+  userNameCanvas: {fileID: 897757694}
 --- !u!1 &471004127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,9 +1870,9 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 462910084}
+      - m_Target: {fileID: 462910087}
         m_TargetAssemblyTypeName: HighscoreTable, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: StoreName
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
