@@ -28,9 +28,9 @@ TagManager:
   - EnemyObstruction
   - WORLD_A
   - MenuBackground
-  - 
-  - 
-  - 
+  - PostProcessing
+  - EnemyOffset
+  - EnemyGround
   - 
   - 
   - 
