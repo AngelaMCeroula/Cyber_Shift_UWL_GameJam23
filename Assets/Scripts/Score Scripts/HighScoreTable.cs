@@ -125,13 +125,12 @@ public class HighscoreTable : MonoBehaviour
 
         
         entryTransform.Find("Pos_text").GetComponent<TextMeshProUGUI>().text = rankString;
-
-        int score = highscoreEntry.score;
-        entryTransform.Find("Name_text").GetComponent<TextMeshProUGUI>().text = score.ToString();
-
+        
         string name = highscoreEntry.name;
         entryTransform.Find("Score_text").GetComponent<TextMeshProUGUI>().text = name;
 
+        int score = highscoreEntry.score;
+        entryTransform.Find("Name_text").GetComponent<TextMeshProUGUI>().text = score.ToString();
         
         //TimeSpan time = TimeSpan.FromSeconds(endTime);
         TimeSpan time = TimeSpan.FromSeconds(highscoreEntry.time);
@@ -185,7 +184,7 @@ public class HighscoreTable : MonoBehaviour
         //add new entry to highscores
         highscores.highscoreEntryList.Add(highscoreEntry);
 
-        // save updated highscores
+        
         if (highscores.highscoreEntryList.Count > 10) // addedin
         {
             for (int h = highscores.highscoreEntryList.Count; h>10; h--)
@@ -193,7 +192,7 @@ public class HighscoreTable : MonoBehaviour
                 highscores.highscoreEntryList.RemoveAt(10);
             }
         }
-        
+        // save updated highscores
         string json = JsonUtility.ToJson(highscores);
         PlayerPrefs.SetString("highscoreTable", json);
         PlayerPrefs.Save();
