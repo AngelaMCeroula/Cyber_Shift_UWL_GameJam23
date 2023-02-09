@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     
     
-    
-    
-    
     //public Animator anim;
     
     public bool _facingRight = true;
@@ -40,6 +37,8 @@ public class PlayerController : MonoBehaviour
     public Transform LaunchOffset;
     private bool _recentlyshot;
     public PlayerHealthEnergy _PHE;
+
+    private AnimationCont aniCunt;
     
     
 
@@ -48,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         //anim = GetComponent<Animator>();
+        aniCunt = GetComponent<AnimationCont>();
 
     }
     
@@ -67,22 +67,23 @@ public class PlayerController : MonoBehaviour
         if(_rb.velocity.y == 0) //ESSENTIAL
         {
             isGrounded = true;
-            if (Time.timeScale != 0)
+            if (Time.timeScale != 0 && animator.GetBool("IsShot") == false)
             {
                 //anim.SetBool("isRunning", false);
-                animator.ResetTrigger("IsShot");
-                animator.ResetTrigger("IsRunning");
-                animator.ResetTrigger("IsJumping");
-                animator.SetTrigger("IsIdle");
+               
+                    animator.ResetTrigger("IsRunning");
+                    animator.ResetTrigger("IsJumping");
+                    animator.SetTrigger("IsIdle");
+                
             }
         }
 
         if  (_rb.velocity.y == 0 && isGrounded == true && _rb.velocity.x == 0)
         {
-            if (Time.timeScale != 0)
+            if (Time.timeScale != 0 && animator.GetBool("IsShot") == false)
             {
                 //anim.SetBool("isRunning", false);
-                animator.ResetTrigger("IsShot");
+                
                 animator.ResetTrigger("IsRunning");
                 animator.ResetTrigger("IsJumping");
                 animator.SetTrigger("IsIdle");
@@ -91,25 +92,24 @@ public class PlayerController : MonoBehaviour
 
         if (_rb.velocity.y != 0 && isGrounded == true)
         {
-            if (Time.timeScale != 0)
+            if (Time.timeScale != 0 && animator.GetBool("IsShot") == false)
             {
                 //anim.SetBool("isRunning", true);
-                Debug.Log("this should be running");
-                animator.ResetTrigger("IsShot");
+                //Debug.Log("this should be running");
+                
                 animator.ResetTrigger("IsIdle");
                 animator.ResetTrigger("IsJumping");
                 animator.SetTrigger("IsRunning");
             }
         }
 
-        if (_rb.velocity.y > 0)
+        if (_rb.velocity.y > 0.001f)
         {
-            if (Time.timeScale != 0)
+            if (Time.timeScale != 0  && animator.GetBool("IsShot") == false)
             {
                 //lias code
-                Debug.Log("JUMP JUMP JUMP");
+                //Debug.Log("JUMP JUMP JUMP");
                 //animator.ResetTrigger("IsRunning");
-                animator.ResetTrigger("IsShot");
                 animator.ResetTrigger("IsIdle");
                 animator.ResetTrigger("IsRunning");
                 animator.SetTrigger("IsJumping");
@@ -119,9 +119,9 @@ public class PlayerController : MonoBehaviour
     //lias code
     public void OnLanding()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0 && animator.GetBool("IsShot") == false)
         {
-            animator.ResetTrigger("IsShot");
+            
             animator.ResetTrigger("IsJumping");
             animator.ResetTrigger("IsRunning");
             animator.SetTrigger("IsIdle");
@@ -191,14 +191,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1") && _facingRight == false && _recentlyshot == false && _PHE.battery > 0 && Time.timeScale != 0)
         {
-            animator.SetTrigger("IsShot");
+            aniCunt.SetAnimation("IsShot");
             Instantiate(projectilePrefLeft, LaunchOffset.position, transform.rotation);
             StartCoroutine(Wait());
         }
 
         if (Input.GetButtonDown("Fire1") && _facingRight == true && _recentlyshot == false && _PHE.battery > 0 && Time.timeScale != 0)
         {
-            animator.SetTrigger("IsShot");
+            aniCunt.SetAnimation("IsShot");
             Instantiate(projectilePrefRight, LaunchOffset.position, transform.rotation);
             StartCoroutine(Wait());
         }
