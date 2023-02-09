@@ -26,7 +26,6 @@ public class PlayerHealthEnergy : MonoBehaviour
         if (col.gameObject.CompareTag("Danger") || col.gameObject.CompareTag("Enemy"))
         {
             LoseLife();
-            
         }
     }
 
@@ -47,29 +46,34 @@ public class PlayerHealthEnergy : MonoBehaviour
             {
                 lives--;
                 StartCoroutine(RespawnDelay());
+                FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerDamage", GetComponent<Transform>().position);
                 break;
             }
             case 4:
             {
                 lives--;
                 StartCoroutine(RespawnDelay());
+                FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerDamage", GetComponent<Transform>().position);
                 break;
             }
             case 3:
             {
                 lives--;
                 StartCoroutine(RespawnDelay());
+                FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerDamage", GetComponent<Transform>().position);
                 break;
             }
             case 2:
             {
                 lives--;
                 StartCoroutine(RespawnDelay());
+                FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerDamage", GetComponent<Transform>().position);
                 break;
             }
             case 1:
             {
                 lives--;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerDeath", GetComponent<Transform>().position);
                 GameManager.GameOver();
                 break;
             }

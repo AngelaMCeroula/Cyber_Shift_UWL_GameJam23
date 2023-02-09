@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Scrap2_PickUp : MonoBehaviour
-{ 
-
-    public AudioClip scrap2sound;
-    
+{
     private void OnTriggerEnter2D(Collider2D col) // when object enters trigger box
     {
         if (col.gameObject.tag == "Player")
@@ -14,7 +11,7 @@ public class Scrap2_PickUp : MonoBehaviour
             Debug.Log("Scrap2");
             //UpdateUI
             AddPoint2();
-            //PlaySound();
+            PlaySound();
             Destroy(gameObject);
             
         }
@@ -23,7 +20,7 @@ public class Scrap2_PickUp : MonoBehaviour
     
     void PlaySound()
     {
-        AudioSource.PlayClipAtPoint(scrap2sound, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/ItemPickUp", GetComponent<Transform>().position);
     }
 
     void AddPoint2()

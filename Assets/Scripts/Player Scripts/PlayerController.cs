@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         {
             _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
-            //AudioSource.PlayClipAtPoint(playerJump, transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerJump", GetComponent<Transform>().position);
             //Debug.Log("NO JUMPING FOR YOU!" + isGrounded);
         }
 
@@ -193,6 +193,7 @@ public class PlayerController : MonoBehaviour
         {
             aniCunt.SetAnimation("IsShot");
             Instantiate(projectilePrefLeft, LaunchOffset.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerShoot", GetComponent<Transform>().position);
             StartCoroutine(Wait());
         }
 
@@ -200,6 +201,7 @@ public class PlayerController : MonoBehaviour
         {
             aniCunt.SetAnimation("IsShot");
             Instantiate(projectilePrefRight, LaunchOffset.position, transform.rotation);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerShoot", GetComponent<Transform>().position);
             StartCoroutine(Wait());
         }
     }
