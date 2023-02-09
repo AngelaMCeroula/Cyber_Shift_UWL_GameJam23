@@ -1,10 +1,10 @@
 ManifestFileVersion: 0
-CRC: 1598872711
+CRC: 1516871154
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: rikrpoison
+      Name: rikrrage
       Dependencies: {}
     Info_1:
-      Name: rikrrage
+      Name: rikrpoison
       Dependencies: {}
