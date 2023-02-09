@@ -7,12 +7,14 @@ public class TeleporterItem : MonoBehaviour
 {
     private PlayerTeleporter _playerTeleporter;
     private Timer _timer;
+    private PressShift _pressShift;
 
     // Start is called before the first frame update
     void Start()
     {
         _playerTeleporter = GameObject.Find("Player").GetComponent<PlayerTeleporter>();
         _timer = GameObject.Find("TimeManager").GetComponent<Timer>();
+        _pressShift = GameObject.Find("GameManager").GetComponent<PressShift>();
 
     }
 
@@ -22,6 +24,7 @@ public class TeleporterItem : MonoBehaviour
         {
             _playerTeleporter._hasTeleporter = true;
             _timer.StartStopWatch();
+            _pressShift.TeleportText();
             Destroy(gameObject);
             
         }
