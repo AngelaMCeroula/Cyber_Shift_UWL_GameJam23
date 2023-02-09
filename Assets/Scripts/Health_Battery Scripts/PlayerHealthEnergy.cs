@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Checkpoints;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthEnergy : MonoBehaviour
 {
@@ -74,7 +75,7 @@ public class PlayerHealthEnergy : MonoBehaviour
             {
                 lives--;
                 FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerFunction/PlayerSFX/PlayerDeath", GetComponent<Transform>().position);
-                GameManager.GameOver();
+                SceneManager.LoadScene("GameOver");
                 break;
             }
             
